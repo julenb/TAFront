@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Descargar PDF desde Amazon S3</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px; /* Mayor borde redondeado */
+            text-align: center;
+            padding: 50px; /* Mayor espacio interior */
+            max-width: 600px; /* Aumentar el ancho del contenedor */
+        }
+
+        h1 {
+            font-size: 42px; /* Texto más grande */
+            color: #333;
+            margin-bottom: 40px; /* Mayor separación desde arriba */
+        }
+
+        label {
+            font-size: 24px; /* Texto más grande */
+            display: block;
+            text-align: left;
+            margin-bottom: 30px; /* Mayor separación entre etiquetas */
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 20px; /* Mayor altura de la entrada */
+            font-size: 24px; /* Texto más grande */
+            border: 2px solid #ccc; /* Borde más grueso */
+            border-radius: 10px; /* Mayor redondez del borde */
+            margin-bottom: 40px; /* Mayor separación desde abajo */
+        }
+
+        .copy-button, .download-button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 25px; /* Mayor tamaño de botón */
+            font-size: 28px; /* Texto más grande */
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 0 25px; /* Mayor espacio entre botones */
+        }
+
+        .copy-button i, .download-button i {
+            font-size: 36px; /* Iconos más grandes */
+        }
+
+        .copy-button:hover, .download-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Descargar PDF</h1>
+        <form action="/pdfdownload" method="get">
+            <label for="key">Campo de Texto:</label>
+            <input type="text" id="key" name="key" value="{{ valor }}">
+            <br><br>
+            <button class="copy-button" onclick="copyValue()" type="button">
+                <i class="fas fa-copy"></i>
+            </button>
+            <button class="download-button">
+                <i class="fas fa-download"></i>
+            </button>
+        </form>
+    </div>
+
+    <script>
+        function copyValue() {
+            var keyInput = document.getElementById("key");
+            keyInput.select();
+            document.execCommand("copy");
+        }
+    </script>
+</body>
+</html>
