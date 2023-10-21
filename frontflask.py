@@ -108,7 +108,7 @@ def procesar_peticion():
                             
                         elif message_json['message']=='Sold_Out':
                             #devolvemos un html con el error y la opcioon de volver atras
-                            print('No quedan entradas')
+                            return  render_template('./sold_out.html')
                         elif message_json['message']=='No_Exists_Event':
                             print('No disponible el evento seleccionado')
                         else: print('HAy un error en el sistema')
