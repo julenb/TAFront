@@ -66,9 +66,9 @@
     </style>
 </head>
 <body>
-    <h1>Flask DynamoDB App</h1>
+    <h1>Crea un evento</h1>
 
-    <h2>Insertar un nuevo evento:</h2>
+    <h2>Rellene el siguiente formulario para crear un evento:</h2>
     <form method="POST">
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" id="nombre" required>
@@ -94,7 +94,7 @@
         <input type="submit" value="Crear Evento">
     </form>
 
-    <h2>Eventos en la tabla:</h2>
+    <h2>Eventos ya creados:</h2>
     <ul>
         {% for item in items %}
             <li>Nombre: {{ item.nombre.S }}, Entradas: {{ item.entradas_max.N }}, Precio: {{ item.precio.N }}</li>
