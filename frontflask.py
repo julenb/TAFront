@@ -191,8 +191,8 @@ def createEvent():
 
 
 if __name__ == '__main__':
-    # app.run(debug=True, host='172.31.34.78',port=7000)
-    app.run(debug=True)
+    app.run(debug=True, host='172.31.34.78',port=7000)
+    # app.run(debug=True)
     # aaaawwww
 
 
