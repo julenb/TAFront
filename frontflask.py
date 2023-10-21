@@ -85,7 +85,7 @@ def procesar_peticion():
             
             # Recibe mensajes de la cola
             messages = sqs.receive_message(QueueUrl=queue_url_response, AttributeNames=['All'], MaxNumberOfMessages=10, WaitTimeSeconds=20)
-            print('mensaje recibido')
+            print('mensajes recibidos: {}'.format(len(messages.get('Messages', []))))
             if 'Messages' in messages:
                 for message in messages['Messages']:
                     # Procesa el mensaje actual
@@ -95,7 +95,7 @@ def procesar_peticion():
 
                     # Aquí puedes agregar la lógica para evaluar si deseas quedarte con el mensaje
                     if message_json['uuid'] == uid:
-                        print(uid)
+                        print('es mi mensaje')
                         # Elimina el mensaje de la cola
                         receipt_handle = message['ReceiptHandle']
                         sqs.delete_message(QueueUrl=queue_url_response, ReceiptHandle=receipt_handle)
@@ -113,11 +113,9 @@ def procesar_peticion():
                             print('No disponible el evento seleccionado')
                         else: print('HAy un error en el sistema')
 
-
-
-
-
                         return jsonify(message_json)
+                    
+                    else: print('no es mi mensaje')
 
     except Exception as e:
         return jsonify({'error': str(e)})
@@ -193,8 +191,8 @@ def createEvent():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='172.31.34.78',port=7000)
-
+    # app.run(debug=True, host='172.31.34.78',port=7000)
+    app.run(debug=True)
     # aaaawwww
 
 
